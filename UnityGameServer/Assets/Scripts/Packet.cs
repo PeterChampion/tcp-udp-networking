@@ -265,6 +265,7 @@ public class Packet : IDisposable
                 // If _moveReadPos is true
                 readPos += 4; // Increase readPos by 4
             }
+            //Debug.Log("DEBUG: returning value " + _value);
             return _value; // Return the int
         }
         else

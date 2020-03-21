@@ -76,15 +76,17 @@ public class Client
             try
             {
                 int _byteLength = stream.EndRead(_result);
+                Debug.Log("bytle length before " + _byteLength);
                 if (_byteLength <= 0)
                 {
+                    Debug.Log("Disconnect due to byteLength");
                     Server.clients[id].Disconnect();
                     return;
                 }
 
                 byte[] _data = new byte[_byteLength];
                 Array.Copy(receiveBuffer, _data, _byteLength);
-
+                Debug.Log("bytle length after " + _byteLength);
                 receivedData.Reset(HandleData(_data)); // Reset receivedData if all data was handled
                 stream.BeginRead(receiveBuffer, 0, dataBufferSize, ReceiveCallback, null);
             }
